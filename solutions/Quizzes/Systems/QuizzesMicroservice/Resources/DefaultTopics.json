@@ -1,0 +1,23 @@
+[
+  {
+  	"topicId": "ConocimientosGenerales",
+    "name" : "Conocimientos generales"
+  },
+  {
+  	"topicId": "CienciaYNaturaleza",
+    "name" : "Ciencia y naturaleza"
+  },
+  {
+  	"topicId": "Deportes",
+    "name" : "Deportes"
+  },
+  {
+  	"topicId": "Historia",
+    "name" : "Historia"
+  },
+  {
+  	"topicId": "Entretenimiento",
+    "name" : "Entretenimiento"
+  }
+
+ ]
