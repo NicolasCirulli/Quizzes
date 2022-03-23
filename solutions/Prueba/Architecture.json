@@ -1,0 +1,22 @@
+{
+  "systems": [
+    {
+      "name": "MyExternalRestApi",
+      "type": "RestApi",
+      "x": 542,
+      "y": 265
+    },
+    {
+      "name": "MyWeb",
+      "type": "WebFrontend",
+      "x": 306,
+      "y": 263
+    }
+  ],
+  "references": [
+    {
+      "fromSystemName": "MyWeb",
+      "toSystemName": "MyExternalRestApi"
+    }
+  ]
+}

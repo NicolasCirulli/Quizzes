@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "systemName": "MyExternalRestApi",
+      "action": "connect",
+      "connectionData": {
+        "url": "https://petstore.swagger.io/v2"
+      }
+    }
+  ]
+}

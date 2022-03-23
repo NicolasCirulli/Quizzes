@@ -1,0 +1,76 @@
+{
+  "eventsAndFunctions": [
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "Navigate",
+            "expressionStartModel": "{}",
+            "uiComponentName": "CmpStartGame"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": []
+      },
+      "name": "buttonCreateGame_click"
+    }
+  ],
+  "model": [],
+  "root": {
+    "children": [
+      {
+        "align": "center",
+        "attribute": {
+          "bold": true,
+          "color": "default",
+          "name": "labelBienvenida",
+          "text": "Bienvenido"
+        },
+        "bold": true,
+        "color": "default",
+        "name": "labelBienvenida",
+        "size": "large",
+        "text": "Bienvenido",
+        "widget": "Label"
+      },
+      {
+        "align": "center",
+        "attribute": {
+          "bold": true,
+          "color": "primary",
+          "name": "labelQuizzesGame",
+          "text": "Quizzes Game"
+        },
+        "bold": true,
+        "color": "primary",
+        "name": "labelQuizzesGame",
+        "size": "x-large",
+        "text": "Quizzes Game",
+        "widget": "Label"
+      },
+      {
+        "align": "center",
+        "color": "primary",
+        "cssClass": "blz-padding-top-large",
+        "name": "buttonCreateGame",
+        "text": "Empezar nuevo juego",
+        "widget": "Button"
+      }
+    ],
+    "cssClass": "blz-padding-top-large blz-padding-right-large blz-padding-left-large blz-padding-bottom-large blz-area-main",
+    "horizontalSeparation": "large",
+    "layout": "container",
+    "verticalSeparation": "large"
+  },
+  "routing": {
+    "path": "/home"
+  },
+  "unused": [
+    {
+      "__internalName": "button1",
+      "name": "button1",
+      "widget": "Button"
+    }
+  ]
+}

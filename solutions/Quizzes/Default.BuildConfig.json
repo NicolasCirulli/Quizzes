@@ -1,0 +1,341 @@
+{
+  "items": [
+    {
+      "systemName": "WebApp",
+      "action": "build",
+      "parameters": [
+        {
+          "configParameterName": "MsWaitWhenCorrectAnswer",
+          "value": 0
+        },
+        {
+          "configParameterName": "MsWaitWhenInorrectAnswer",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "systemName": "QuizzesMicroservice",
+      "action": "build",
+      "buildPort": 8888,
+      "parameters": [
+        {
+          "configParameterName": "TotalRoundsPerGame",
+          "value": 5
+        },
+        {
+          "configParameterName": "MaxRankingItemsPerTopic",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "systemName": "QuizzesDatabase",
+      "action": "mock",
+      "mockInitialization": {
+        "records": [
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "History1",
+            "topicId": "History",
+            "question": "¿Qué actividad se favoreció con el uso de las balsas simples?",
+            "answe1": "La pesca",
+            "answer2": "Viajar",
+            "answer3": "Nadar",
+            "answer4": "Nada",
+            "correctAnswer": 1
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "History2",
+            "topicId": "History",
+            "question": "¿Cómo se les llamaba a los primeros pobladores que se desplazaban en busca de alimento?",
+            "answe1": "Kamikazes",
+            "answer2": "Nómadas",
+            "answer3": "Cazadores",
+            "answer4": "Sin nombre",
+            "correctAnswer": 2
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "History3",
+            "topicId": "History",
+            "question": "¿Cuál fue el primer metal que el hombre empleó?",
+            "answe1": "Hierro",
+            "answer2": "Oro",
+            "answer3": "Cobre",
+            "answer4": "Plata",
+            "correctAnswer": 3
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "History4",
+            "topicId": "History",
+            "question": "¿En qué lugar den mundo se dio el origen de la humanidad?",
+            "answe1": "America",
+            "answer2": "Europa",
+            "answer3": "Asia",
+            "answer4": "Africa",
+            "correctAnswer": 4
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "History5",
+            "topicId": "History",
+            "question": "¿Cuál era la capital del imperio Inca?",
+            "answe1": "Cuzco",
+            "answer2": "Quito",
+            "answer3": "Machu Picchu",
+            "answer4": "Lima",
+            "correctAnswer": 1
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "ScienceAndNature1",
+            "topicId": "ScienceAndNature",
+            "question": "¿Cuál es la unidad para medir la masa?",
+            "answe1": "El kilogramo",
+            "answer2": "El metro",
+            "answer3": "El litro",
+            "answer4": "El kilometro",
+            "correctAnswer": 1
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "ScienceAndNature2",
+            "topicId": "ScienceAndNature",
+            "question": "¿Cómo se llama al espacio que ocupa un objeto?",
+            "answe1": "Capacidad",
+            "answer2": "Peso",
+            "answer3": "Volumen",
+            "answer4": "Masa",
+            "correctAnswer": 3
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "ScienceAndNature3",
+            "topicId": "ScienceAndNature",
+            "question": "Se alimentan de plantas y carne",
+            "answe1": "Reciclado",
+            "answer2": "Omnívoro",
+            "answer3": "Herbívoros",
+            "answer4": "Respiración",
+            "correctAnswer": 2
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "ScienceAndNature4",
+            "topicId": "ScienceAndNature",
+            "question": "¿Cuál es el liquido que mas sustancias disuelve?",
+            "answe1": "Alcohol",
+            "answer2": "El agua",
+            "answer3": "El aceite",
+            "answer4": "El petróleo",
+            "correctAnswer": 2
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "ScienceAndNature5",
+            "topicId": "ScienceAndNature",
+            "question": "¿Cuál es un ejemplo de materia en estado sólido ? ",
+            "answe1": "EL humo de un auto",
+            "answer2": "El hielo",
+            "answer3": "El agua",
+            "answer4": "Una gelatina",
+            "correctAnswer": 2
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "Sports1",
+            "topicId": "Sports",
+            "question": "¿QUÉ DEPORTE ES COLECTIVO?",
+            "answe1": "NATACIÓN",
+            "answer2": "BASQUETBOL",
+            "answer3": "GOL",
+            "answer4": "ATLETISMO",
+            "correctAnswer": 2
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "Sports2",
+            "topicId": "Sports",
+            "question": "  ¿CUANTO MIDE EL CAMPO DE VOLEIBOL?",
+            "answe1": "17m x 6m",
+            "answer2": "15m x 5m",
+            "answer3": "18m x 9m",
+            "answer4": "10m x 10m",
+            "correctAnswer": 3
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "Sports3",
+            "topicId": "Sports",
+            "question": "¿CUÁL DE LAS ALTERNATIVAS ES UNA PRUEBA DE CAMPO EN EL ATLETISMO?",
+            "answe1": "PASE PECHO",
+            "answer2": "SAQUE BAJO MANO",
+            "answer3": " LANZAMIENTO DE BALA",
+            "answer4": "TIRO AL ARCO",
+            "correctAnswer": 3
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "Sports4",
+            "topicId": "Sports",
+            "question": "¿ CUÁL ES EL DEPORTE QUE TIENE SEIS PIEZAS?",
+            "answe1": "TENIS",
+            "answer2": " EL ATLETISMO",
+            "answer3": "EL BASQUETBOL",
+            "answer4": "EL AJEDREZ",
+            "correctAnswer": 4
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "Sports5",
+            "topicId": "Sports",
+            "question": "¿ EN QUÉ DEPORTE ES ESTABLECIDO JUGAR EN 4 PARCIALES DE 10 MINUTOS CADA UNO?",
+            "answe1": "BASQUETBOL",
+            "answer2": "FÚTBOL",
+            "answer3": "VOLEIBOL",
+            "answer4": "TENIS",
+            "correctAnswer": 1
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "Enterteiment1",
+            "topicId": "Entertainment",
+            "question": "¿Cómo se llama el juguete que es un cubo de colores el cual giran sus partes?",
+            "answe1": "Cubo de colores",
+            "answer2": "Rubik",
+            "answer3": "Cubo azul",
+            "answer4": "Colors",
+            "correctAnswer": 2
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "Enterteiment2",
+            "topicId": "Entertainment",
+            "question": "¿Cómo se llama la princesa de Disney conocida como \"La sirenita\"?",
+            "answe1": "Bella",
+            "answer2": "Blanca Nieves",
+            "answer3": "Ariel",
+            "answer4": "Cenicienta",
+            "correctAnswer": 3
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "Enterteiment3",
+            "topicId": "Entertainment",
+            "question": "¿Quién canta la canción de Firework?",
+            "answe1": "Katy Perry",
+            "answer2": "Taylor Swift",
+            "answer3": "Ariana Grande",
+            "answer4": "The Jonas Brothers",
+            "correctAnswer": 1
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "Enterteiment4",
+            "topicId": "Entertainment",
+            "question": "¿Quién es Mario Casas?",
+            "answe1": "Chef",
+            "answer2": "Actor y productor",
+            "answer3": "Cantante",
+            "answer4": "Actor",
+            "correctAnswer": 4
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "Enterteiment5",
+            "topicId": "Entertainment",
+            "question": "¿Cómo se llama el crítico culinario de Ratatouille?",
+            "answe1": "Cristopher",
+            "answer2": "Ego",
+            "answer3": "Alejandro",
+            "answer4": "Max",
+            "correctAnswer": 2
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "GeneralKnowledge1",
+            "topicId": "GeneralKnowledge",
+            "question": "El activo de una empresa corresponde a",
+            "answe1": "deudas ",
+            "answer2": "bienes",
+            "answer3": "gastos",
+            "answer4": "servicios",
+            "correctAnswer": 2
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "GeneralKnowledge2",
+            "topicId": "GeneralKnowledge",
+            "question": "  ¿ Cómo se denomina el documento contable que indica la compra o venta de un bien o servicio?",
+            "answe1": "Recibo",
+            "answer2": "Remito",
+            "answer3": "Balance",
+            "answer4": "Factura",
+            "correctAnswer": 4
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "GeneralKnowledge3",
+            "topicId": "GeneralKnowledge",
+            "question": " Un contador puede trabajar en:",
+            "answe1": "Empresa privada",
+            "answer2": "ONGs",
+            "answer3": "La Administración Pública",
+            "answer4": "Todas las anteriores",
+            "correctAnswer": 4
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "GeneralKnowledge",
+            "topicId": "GeneralKnowledge",
+            "question": "¿Cuáles son los colores primarios ?",
+            "answe1": "azul, amarillo y griss",
+            "answer2": "azul, amarillo y rojo",
+            "answer3": " azul, amarillo y verde",
+            "answer4": "azul, amarillo y celeste",
+            "correctAnswer": 2
+          },
+          {
+            "rdsTableName": "Quiz",
+            "quizId": "GeneralKnowledge5",
+            "topicId": "GeneralKnowledge",
+            "question": "¿Cuántos huesos tiene el cuerpo humano?",
+            "answe1": "200",
+            "answer2": "206",
+            "answer3": "306",
+            "answer4": "406",
+            "correctAnswer": 2
+          },
+          {
+            "rdsTableName": "Topic",
+            "topicId": "GeneralKnowledge",
+            "name": "General Knowledge"
+          },
+          {
+            "rdsTableName": "Topic",
+            "topicId": "ScienceAndNature",
+            "name": "Science And Nature"
+          },
+          {
+            "rdsTableName": "Topic",
+            "topicId": "Sports",
+            "name": "Sports"
+          },
+          {
+            "rdsTableName": "Topic",
+            "topicId": "History",
+            "name": "History"
+          },
+          {
+            "rdsTableName": "Topic",
+            "topicId": "Entertainment",
+            "name": "Entertainment"
+          }
+        ]
+      }
+    }
+  ]
+}

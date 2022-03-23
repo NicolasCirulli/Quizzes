@@ -1,0 +1,392 @@
+{
+  "eventsAndFunctions": [
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "Set",
+            "expression": "[]",
+            "variableName": "gridQuizzesFilterConfigs"
+          },
+          {
+            "command": "Push",
+            "expressionItem": "{ key: \"f1\", label: \"Topic Name\", type: \"text\" }",
+            "variableNameList": "gridQuizzesFilterConfigs"
+          },
+          {
+            "command": "Push",
+            "expressionItem": "{ key: \"f2\", label: \"Question\", type: \"text\" }",
+            "variableNameList": "gridQuizzesFilterConfigs"
+          },
+          {
+            "command": "Push",
+            "expressionItem": "{ key: \"f3\", label: \"Answer\", type: \"text\" }",
+            "variableNameList": "gridQuizzesFilterConfigs"
+          },
+          {
+            "command": "SetFilterConfigs",
+            "expression": "^gridQuizzesFilterConfigs",
+            "widgetName": "gridQuizzes"
+          },
+          {
+            "command": "Refresh",
+            "widgetName": "gridQuizzes"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "gridQuizzesFilterConfigs",
+            "type": "list(FilterConfig)"
+          }
+        ]
+      },
+      "name": "gridQuizzes_init"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "args",
+            "type": "ArgsLoadRecords"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Set",
+            "expression": "{}",
+            "variableName": "args1"
+          },
+          {
+            "command": "Set",
+            "expression": "^args.offset",
+            "variableName": "args1.offset"
+          },
+          {
+            "command": "Set",
+            "expression": "^args.limit",
+            "variableName": "args1.limit"
+          },
+          {
+            "command": "Set",
+            "expression": "Map(FindFirst(^args.filters, key == \"f1\"), value)",
+            "variableName": "args1.topicName"
+          },
+          {
+            "command": "Set",
+            "expression": "Map(FindFirst(^args.filters, key == \"f2\"), value)",
+            "variableName": "args1.question"
+          },
+          {
+            "command": "Set",
+            "expression": "Map(FindFirst(^args.filters, key == \"f3\"), value)",
+            "variableName": "args1.answer"
+          },
+          {
+            "command": "Return",
+            "expression": "QuizzesMicroservice.ListQuizzes(^args1)"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "args1",
+            "type": "QuizzesMicroservice.ArgsListQuizzes"
+          }
+        ]
+      },
+      "name": "gridQuizzes_loadRecords"
+    },
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "buttons": "ok-cancel",
+            "command": "Open",
+            "expressionIcon": "\"add.svg\"",
+            "expressionStartModel": "null",
+            "expressionTitle": "\"Agregar un nuevo Quizz\"",
+            "mode": "window",
+            "size": "default",
+            "uiComponentName": "CmpQuizEditor"
+          },
+          {
+            "children": [
+              {
+                "command": "Set",
+                "expression": "modelEdited.instance",
+                "variableName": "newQuiz"
+              },
+              {
+                "command": "Execute",
+                "expression": "QuizzesMicroservice.CreateQuiz( newQuiz )"
+              },
+              {
+                "command": "Refresh",
+                "widgetName": "gridQuizzes"
+              },
+              {
+                "command": "CloseCurrent"
+              }
+            ],
+            "command": "OnOk",
+            "variableNameOpenedModel": "modelEdited"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "modelEdited",
+            "type": "any"
+          },
+          {
+            "name": "newQuiz",
+            "type": "QuizzesMicroservice.Quiz"
+          }
+        ]
+      },
+      "name": "gridQuizzes_handlerAction_agregar"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "recordRef",
+            "type": "string"
+          },
+          {
+            "name": "arg",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "ReadRecord",
+            "expressionRecordRef": "recordRef",
+            "variableName": "quiz",
+            "widgetName": "gridQuizzes"
+          },
+          {
+            "buttons": "ok-cancel",
+            "command": "Open",
+            "expressionIcon": "\"edit.svg\"",
+            "expressionStartModel": "{instance : quiz }",
+            "expressionTitle": "\"Editar el Quizz\"",
+            "mode": "window",
+            "size": "default",
+            "uiComponentName": "CmpQuizEditor"
+          },
+          {
+            "children": [
+              {
+                "command": "Set",
+                "expression": "modelEdited.instance",
+                "variableName": "quiz"
+              },
+              {
+                "command": "Execute",
+                "expression": "QuizzesMicroservice.UpdateQuiz( quiz.quizId, quiz)"
+              },
+              {
+                "command": "Refresh",
+                "widgetName": "gridQuizzes"
+              },
+              {
+                "command": "CloseCurrent"
+              }
+            ],
+            "command": "OnOk",
+            "variableNameOpenedModel": "modelEdited"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "modelEdited",
+            "type": "any"
+          },
+          {
+            "name": "quiz",
+            "type": "QuizzesMicroservice.Quiz"
+          }
+        ]
+      },
+      "name": "gridQuizzes_handlerRecordAction_editar"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "recordRef",
+            "type": "string"
+          },
+          {
+            "name": "arg",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "ReadRecord",
+            "expressionRecordRef": "recordRef",
+            "variableName": "quiz",
+            "widgetName": "gridQuizzes"
+          },
+          {
+            "command": "ConfirmMessage",
+            "expressionMessage": "\" seguro quiere eliminar el quiz?\"",
+            "expressionTitle": "\"Eliminar Quiz\""
+          },
+          {
+            "children": [
+              {
+                "command": "Execute",
+                "expression": "QuizzesMicroservice.DeleteQuiz( quiz.quizId )"
+              },
+              {
+                "command": "Refresh",
+                "widgetName": "gridQuizzes"
+              }
+            ],
+            "command": "OnYes"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "quiz",
+            "type": "QuizzesMicroservice.Quiz"
+          }
+        ]
+      },
+      "name": "gridQuizzes_handlerRecordAction_remove"
+    }
+  ],
+  "model": [],
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "align": "left",
+            "color": "secondary",
+            "cssClass": "blz-padding-top-large blz-padding-left-large blz-padding-bottom-large",
+            "icon": "quiz-edit.svg",
+            "name": "iconMain",
+            "size": "xx-large",
+            "widget": "Icon"
+          },
+          {
+            "align": "left",
+            "bold": true,
+            "color": "default",
+            "cssClass": "blz-padding-left-large",
+            "dock": "previous",
+            "name": "labelTitle",
+            "size": "large",
+            "text": "Administrador de Quizzes",
+            "widget": "Label"
+          }
+        ],
+        "cssClass": "blz-border-top blz-border-right blz-border-left blz-border-bottom blz-border-radius",
+        "layout": "container"
+      },
+      {
+        "children": [
+          {
+            "actions": [
+              {
+                "color": "primary",
+                "icon": "add.svg",
+                "key": "agregar",
+                "text": "Agregar Quiz"
+              }
+            ],
+            "columns": [
+              {
+                "align": "left",
+                "bindText": "quizId",
+                "format": "Number",
+                "header": "Quiz Id",
+                "size": 1
+              },
+              {
+                "align": "left",
+                "bindText": "question",
+                "header": "Question",
+                "size": 1
+              },
+              {
+                "align": "left",
+                "bindText": "answe1",
+                "header": "Answe1",
+                "size": 1
+              },
+              {
+                "align": "left",
+                "bindText": "answer2",
+                "header": "Answer2",
+                "size": 1
+              },
+              {
+                "align": "left",
+                "bindText": "answer3",
+                "header": "Answer3",
+                "size": 1
+              },
+              {
+                "align": "left",
+                "bindText": "answer4",
+                "header": "Answer4",
+                "size": 1
+              },
+              {
+                "align": "left",
+                "bindText": "correctAnswer",
+                "format": "Number",
+                "header": "Correct Answer",
+                "size": 1
+              },
+              {
+                "align": "left",
+                "bindText": "topic.name",
+                "header": "Topic Name",
+                "size": 1
+              }
+            ],
+            "cssClass": "blz-padding-top-large blz-padding-right-large blz-padding-left-large",
+            "name": "gridQuizzes",
+            "pageSize": 20,
+            "recordActions": [
+              {
+                "icon": "edit.svg",
+                "key": "editar",
+                "text": "editar quiz"
+              },
+              {
+                "icon": "remove.svg",
+                "key": "remove",
+                "text": "eliminar quiz"
+              }
+            ],
+            "typeName": "QuizzesMicroservice.Quiz",
+            "widget": "Grid",
+            "withFiltering": true,
+            "withPaging": true
+          }
+        ],
+        "cssClass": "blz-border-top blz-border-right blz-border-left blz-border-bottom blz-border-radius blz-cast-shadow",
+        "layout": "container"
+      }
+    ],
+    "cssClass": "blz-padding-top-large blz-padding-right-large blz-padding-left-large blz-area-default",
+    "layout": "container",
+    "verticalSeparation": "large"
+  },
+  "routing": {
+    "path": "/QuizzesAdmin"
+  },
+  "unused": []
+}

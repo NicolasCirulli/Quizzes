@@ -1,0 +1,19 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "gameId",
+        "type": "integer"
+      }
+    ],
+    "statements": [
+      {
+        "command": "Return",
+        "expression": "RdsSelectOne(\n\tQuizzesDatabase.Round, \n    RdsSum( DatetimeDiff(endTime, startTime)),\n    gameId == ^gameId\n)"
+      }
+    ],
+    "typeReturn": "integer",
+    "variables": []
+  },
+  "routing": null
+}

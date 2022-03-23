@@ -1,0 +1,202 @@
+{
+  "eventsAndFunctions": [
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "ReadModel",
+            "modelVariableName": "gameId",
+            "variableName": "gameId"
+          },
+          {
+            "command": "Set",
+            "expression": "QuizzesMicroservice.GetGameState(gameId)",
+            "variableName": "gameState"
+          },
+          {
+            "command": "SetValue",
+            "expression": "{ message: getFinalMessageByScore(gameState.score, gameState.totalRound)}",
+            "widgetName": "htmlrendererFinalMessage"
+          },
+          {
+            "command": "SetValue",
+            "expression": "{ score: gameState.score, totalRounds: gameState.totalRound}",
+            "widgetName": "htmlrendererFinalScore"
+          },
+          {
+            "command": "WriteModel",
+            "expression": "gameState.playerName",
+            "modelVariableName": "playerName"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "gameId",
+            "type": "integer"
+          },
+          {
+            "name": "gameState",
+            "type": "QuizzesMicroservice.GameState"
+          }
+        ]
+      },
+      "name": "main_init"
+    },
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "ReadModel",
+            "modelVariableName": "playerName",
+            "variableName": "playerName"
+          },
+          {
+            "command": "Navigate",
+            "expressionStartModel": "{playerName: playerName}",
+            "uiComponentName": "CmpStartGame"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "playerName",
+            "type": "string"
+          }
+        ]
+      },
+      "name": "buttonPlayAgain_click"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "userScore",
+            "type": "integer"
+          },
+          {
+            "name": "maxScore",
+            "type": "integer"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Set",
+            "expression": "( userScore / maxScore ) * 100",
+            "variableName": "score"
+          },
+          {
+            "children": [
+              {
+                "command": "Return",
+                "expression": "\"Perfecto, felicitaciones\""
+              }
+            ],
+            "command": "If",
+            "expression": "score >= 100"
+          },
+          {
+            "children": [
+              {
+                "command": "Return",
+                "expression": "\"Estuvo bien\""
+              }
+            ],
+            "command": "ElseIf",
+            "expression": "score >= 75"
+          },
+          {
+            "children": [
+              {
+                "command": "Return",
+                "expression": "\"Nada mal\""
+              }
+            ],
+            "command": "ElseIf",
+            "expression": "score >= 50"
+          },
+          {
+            "children": [
+              {
+                "command": "Return",
+                "expression": "\"Sigue intentando\""
+              }
+            ],
+            "command": "ElseIf",
+            "expression": "score >= 25"
+          },
+          {
+            "children": [
+              {
+                "command": "Return",
+                "expression": "\"Concentrese e intente de nuevo\""
+              }
+            ],
+            "command": "Else"
+          }
+        ],
+        "typeReturn": "string",
+        "variables": [
+          {
+            "name": "score",
+            "type": "decimal"
+          }
+        ]
+      },
+      "name": "getFinalMessageByScore"
+    }
+  ],
+  "model": [
+    {
+      "name": "gameId",
+      "required": true,
+      "type": "integer"
+    },
+    {
+      "name": "playerName",
+      "required": false,
+      "type": "string"
+    }
+  ],
+  "root": {
+    "children": [
+      {
+        "cssClass": "blz-padding-top-large blz-padding-right-large blz-padding-left-large blz-padding-bottom-large",
+        "htmlTemplate": "<center>\n\t<h2>\n      <b>{{message}}</b>\n  </h2>\n</center>",
+        "name": "htmlrendererFinalMessage",
+        "widget": "HtmlRenderer"
+      },
+      {
+        "cssClass": "blz-padding-top-large blz-padding-bottom-large",
+        "htmlTemplate": "<center>\n\t<h3>\n      Tu puntuación fue: \n  </h3>\n  <h1>\n    {{score}} / {{totalRounds}}\n  </h1>\n  \n</center>",
+        "name": "htmlrendererFinalScore",
+        "widget": "HtmlRenderer"
+      },
+      {
+        "align": "center",
+        "color": "success",
+        "cssClass": "blz-padding-top-large blz-padding-bottom-large",
+        "name": "buttonPlayAgain",
+        "size": "large",
+        "text": "Jugar de nuevo",
+        "widget": "Button"
+      }
+    ],
+    "cssClass": "blz-area-default",
+    "layout": "container"
+  },
+  "routing": {
+    "path": "/end-game"
+  },
+  "unused": [
+    {
+      "__internalName": "label1",
+      "color": "default",
+      "name": "label1",
+      "text": "CmpEndGame",
+      "widget": "Label"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "gameId",
+        "type": "integer"
+      }
+    ],
+    "statements": [
+      {
+        "command": "Set",
+        "expression": "GetGame(gameId)",
+        "variableName": "game"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsSelect(\n\tQuizzesDatabase.Round,\n    quizId,\n    gameId == ^gameId)",
+        "variableName": "quizIdsPlayed"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsSelect(\n\tQuizzesDatabase.Quiz,\n    quizId,\n    [\n    \ttopicId == ^game.topicId,\n        RdsConditional(\n        \tRdsNotIn( quizId, ^quizIdsPlayed), Count(^quizIdsPlayed) > 0\n        )\n    ]\n)",
+        "variableName": "avalibleQuizIdsToPick"
+      },
+      {
+        "children": [
+          {
+            "command": "Return",
+            "expression": "null"
+          }
+        ],
+        "command": "If",
+        "expression": "IsNull(avalibleQuizIdsToPick)"
+      },
+      {
+        "command": "Set",
+        "expression": "PickRandom(avalibleQuizIdsToPick)",
+        "variableName": "randomQuizId"
+      },
+      {
+        "command": "Return",
+        "expression": "GetQuiz(randomQuizId)"
+      }
+    ],
+    "typeReturn": "Game",
+    "variables": [
+      {
+        "name": "game",
+        "type": "Game"
+      },
+      {
+        "name": "quizIdsPlayed",
+        "type": "list ( integer )"
+      },
+      {
+        "name": "avalibleQuizIdsToPick",
+        "type": "list ( integer )"
+      },
+      {
+        "name": "randomQuizId",
+        "type": "integer"
+      }
+    ]
+  },
+  "routing": null
+}
